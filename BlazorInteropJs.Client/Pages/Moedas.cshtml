@@ -1,0 +1,39 @@
+﻿@page "/moedas"
+@inherits MoedasModel
+
+@if (Moedas == null)
+{
+
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" onclick="@CallJSMethod">Chamar método JS do C#</button>
+        </div>
+        <div class="col-md-12" id="tabelaCotacoes">
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Simbolo</th>
+                        <th>Rank</th>
+                        <th>Preco</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var moeda in Moedas)
+                    {
+                        <tr>
+                            <td>@moeda.Nome</td>
+                            <td>@moeda.Simbolo</td>
+                            <td>@moeda.Rank</td>
+                            <td>USD @moeda.Preco.ToString("N")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+}
