@@ -1,5 +1,5 @@
 ﻿@page "/moedas"
-@inherits MoedasModel
+@inherits BlazorInteropJs.Client.Pages.MoedasModel
 
 @if (Moedas == null)
 {
@@ -9,9 +9,16 @@ else
 {
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" onclick="@CallJSMethod">Chamar método JS do C#</button>
+            <button class="btn btn-primary" onclick="@CallJSMethod">Chamar método JS pelo C#</button>
+            &nbsp;
+            <button class="btn btn-primary" id="btnJsToCs">Executar Javascript que chama rotina C#</button>
         </div>
-        <div class="col-md-12" id="tabelaCotacoes">
+        
+        <hr/>
+        <div class="col-md-3 col-sm-3">
+            <span id="resultadoCSharp"></span>
+        </div>
+        <div class="col-md-6 col-sm-9" id="tabelaCotacoes">
             <table class="table table-striped">
                 <thead class="thead-light">
                     <tr>

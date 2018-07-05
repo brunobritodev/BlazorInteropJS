@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Blazor.Components;
 
 namespace BlazorInteropJs.Client.Pages
 {
+    
     public class MoedasModel : BlazorComponent
     {
+        
         [Inject]
         protected HttpClient Http { get; set; }
 
@@ -20,9 +22,19 @@ namespace BlazorInteropJs.Client.Pages
             Moedas = await Http.GetJsonAsync<List<MoedaViewModel>>($"/api/cotacao");
         }
 
+        protected override void OnAfterRender()
+        {
+            RegisteredFunction.Invoke<bool>("DocumentReady");
+        }
         protected void CallJSMethod()
         {
             RegisteredFunction.Invoke<bool>("GerarPDF");
+        }
+
+
+        public static string ExecutarRotinaCSharp(string nome)
+        {
+            return $"O javascript informou: {nome}";
         }
     }
 }

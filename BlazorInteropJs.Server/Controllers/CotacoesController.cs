@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using BlazorInteropJs.Shared;
@@ -25,5 +26,9 @@ namespace BlazorInteropJs.Server.Controllers
             }).ToList();
             return Ok(moedas);
         }
+
+
     }
+
+    
 }
